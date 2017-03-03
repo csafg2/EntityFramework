@@ -318,6 +318,8 @@ namespace Microsoft.EntityFrameworkCore.Query
             _navigationRewritingExpressionVisitorFactory
                 .Create(this).Rewrite(queryModel, parentQueryModel: null);
 
+            entityEqualityRewritingExpressionVisitor.Rewrite(queryModel);
+
             QueryCompilationContext.Logger
                 .LogDebug(
                     CoreEventId.OptimizedQueryModel,
